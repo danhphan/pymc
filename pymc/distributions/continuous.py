@@ -583,6 +583,9 @@ class Normal(Continuous):
         )
 
 
+from pymc.distributions.distribution import DIST_PARAMETER_TYPES
+
+
 class TruncatedNormalRV(RandomVariable):
     name = "truncated_normal"
     ndim_supp = 0
@@ -594,7 +597,7 @@ class TruncatedNormalRV(RandomVariable):
     def rng_fn(
         cls,
         rng: np.random.RandomState,
-        mu: Union[np.ndarray, float],
+        mu: DIST_PARAMETER_TYPES,
         sigma: Union[np.ndarray, float],
         lower: Union[np.ndarray, float],
         upper: Union[np.ndarray, float],

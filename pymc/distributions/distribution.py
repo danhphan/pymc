@@ -19,9 +19,10 @@ import warnings
 
 from abc import ABCMeta
 from functools import singledispatch
-from typing import Callable, Optional, Sequence
+from typing import Callable, Optional, Sequence, Union
 
 import aesara
+import numpy as np
 
 from aeppl.logprob import _logcdf, _logprob
 from aesara import tensor as at
@@ -55,6 +56,8 @@ __all__ = [
     "Discrete",
     "NoDistribution",
 ]
+
+DIST_PARAMETER_TYPES = Union[np.ndarray, int, float, TensorVariable]
 
 vectorized_ppc = contextvars.ContextVar(
     "vectorized_ppc", default=None
